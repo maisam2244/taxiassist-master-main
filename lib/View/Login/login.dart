@@ -1,117 +1,52 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
+import 'package:taxiassist/Utils/app_color/app_colors.dart';
+import 'package:taxiassist/Utils/button/round_button.dart';
+import 'package:taxiassist/Utils/textfield/text_fields.dart';
+import 'package:taxiassist/View/Register/register.dart';
 
-class Login extends StatelessWidget {
+class  Login_Page extends StatelessWidget {
+  const  Login_Page({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.purple.shade50,
-        body: SafeArea(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                Icons.account_circle,
-                size: 100,
-                color: Colors.purple.shade900,
-              ),
-              SizedBox(height: 20),
-              Text(
-                'Taxi Assist',
-                style: TextStyle(
-                  color: Colors.purple.shade900,
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40),
-                child: TextFormField(
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Colors.white,
-                    hintText: 'Username',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40),
-                child: TextFormField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Colors.white,
-                    hintText: 'Password',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {},
-                child: Text(
-                  'Login', 
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                  )
-                 ),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.purple.shade900,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-                ),
-              ),
-              SizedBox(height: 40),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      color: Colors.purple.shade900,
-                    ),
-                    
-                    child: Icon(Icons.g_translate, color: Colors.white)
-                  ),
+    TextEditingController emailController = TextEditingController();
+    TextEditingController passwordContoller = TextEditingController();
+    return  Scaffold(
+      backgroundColor: AppColors.blackColor,
+      body:  SafeArea(
+          child: Center(
+            child: Column(
+              children: [
+                SizedBox(height: MediaQuery.of(context).size.height*0.1,),
+                Text("Infos taxi App",style: TextStyle(color: Colors.yellow,fontSize: 30, fontWeight: FontWeight.bold),),
+                SizedBox(height: MediaQuery.of(context).size.height*0.1,),
+                MyTextField(hintText: "abc@xyz.com", labelText: "Email", controller: emailController),
+                SizedBox(height: MediaQuery.of(context).size.height*0.03,),
+                MyTextField(hintText: "Strong password", labelText: "Password", controller: passwordContoller),
+                SizedBox(height: MediaQuery.of(context).size.height*0.1,),
+                MyButton(ontap: (){}, text: "Login"),
+                SizedBox(height: MediaQuery.of(context).size.height*0.03,),
+                MyButton(ontap: (){}, text: "Sign up using phone number"),
+                TextButton(onPressed: (){
+                  Get.to(() => Register_Page());
+                }, child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Not a member? ",style: TextStyle(color: AppColors.whiteColor),),
+                    SizedBox(width: MediaQuery.of(context).size.width*0.01 ,)
+                    ,Text("Register",style: TextStyle(color: AppColors.purpleColor),)
+                  ],
+                )),
+                
 
-                  SizedBox(width: 20),
-
-                  Container(
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      color: Colors.purple.shade900,
-                    ),
-                    
-                    child: Icon(Icons.facebook, color: Colors.white)
-                  ),
-
-                  SizedBox(width: 20),
-
-                  Container(
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      color: Colors.purple.shade900,
-                    ),
-                    
-                    child: Icon(Icons.phone, color: Colors.white)
-                  ),
-                ],
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-      );
-    }
+       ),
+      
+    );
+  }
 }

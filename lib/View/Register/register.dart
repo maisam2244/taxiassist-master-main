@@ -1,134 +1,55 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:taxiassist/Utils/app_color/app_colors.dart';
+import 'package:taxiassist/Utils/button/round_button.dart';
+import 'package:taxiassist/Utils/textfield/text_fields.dart';
+import 'package:taxiassist/View/Login/login.dart';
 
-class Register extends StatelessWidget {
+class  Register_Page extends StatelessWidget {
+  const  Register_Page({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.purple.shade50,
-        body: SafeArea(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                Icons.account_circle,
-                size: 100,
-                color: Colors.purple.shade900,
-              ),
-              SizedBox(height: 20),
-              Text(
-                'Taxi Assist',
-                style: TextStyle(
-                  color: Colors.purple.shade900,
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40),
-                child: TextFormField(
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Colors.white,
-                    hintText: 'Email',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                  ),
-                ),
-              ),
+    TextEditingController emailController = TextEditingController();
+    TextEditingController passwordContoller = TextEditingController();
+    TextEditingController confirmPasswordContoller = TextEditingController();
+    return  Scaffold(
+      backgroundColor: AppColors.blackColor,
+      body:  SafeArea(
+          child: Center(
+            child: Column(
+              children: [
+                SizedBox(height: MediaQuery.of(context).size.height*0.1,),
+                Text("Register User",style: TextStyle(color: Colors.white,fontSize: 30, fontWeight: FontWeight.bold),),
+                SizedBox(height: MediaQuery.of(context).size.height*0.1,),
+                MyTextField(hintText: "abc@xyz.com", labelText: "Email", controller: emailController),
+                SizedBox(height: MediaQuery.of(context).size.height*0.03,),
+                MyTextField(hintText: "password", labelText: "Password", controller: passwordContoller),
+                SizedBox(height: MediaQuery.of(context).size.height*0.03,),
+                MyTextField(hintText: "confirm password", labelText: "Confirm Password", controller: emailController),
+                SizedBox(height: MediaQuery.of(context).size.height*0.1,),
+                MyButton(ontap: (){}, text: "Register"),
+                SizedBox(height: MediaQuery.of(context).size.height*0.01,),
+                TextButton(onPressed: (){
+                  Get.to(() => Login_Page());
+                }, child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Already a member? ",style: TextStyle(color: AppColors.whiteColor),),
+                    SizedBox(width: MediaQuery.of(context).size.width*0.01 ,)
+                    ,Text("Sign in",style: TextStyle(color: AppColors.purpleColor),)
+                  ],
+                )),
+                
+                
 
-              SizedBox(height: 20),
-
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40),
-                child: TextFormField(
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Colors.white,
-                    hintText: 'Phone Number',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                  ),
-                ),
-              ),
-
-              SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40),
-                child: TextFormField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Colors.white,
-                    hintText: 'Password',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {},
-                child: Text(
-                  'Register', 
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                  )
-                 ),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.purple.shade900,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-                ),
-              ),
-              SizedBox(height: 40),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      color: Colors.purple.shade900,
-                    ),
-                    
-                    child: Icon(Icons.g_translate, color: Colors.white)
-                  ),
-
-                  SizedBox(width: 20),
-
-                  Container(
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      color: Colors.purple.shade900,
-                    ),
-                    
-                    child: Icon(Icons.facebook, color: Colors.white)
-                  ),
-
-                  SizedBox(width: 20),
-
-                  Container(
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      color: Colors.purple.shade900,
-                    ),
-                    
-                    child: Icon(Icons.phone, color: Colors.white)
-                  ),
-                ],
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-      );
-    }
+       ),
+      
+    );
+  }
 }

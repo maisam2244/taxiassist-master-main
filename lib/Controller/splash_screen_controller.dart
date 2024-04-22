@@ -2,16 +2,27 @@
 
 import 'dart:async';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:taxiassist/View/Home_screen/Home_page.dart';
-import 'package:taxiassist/View/Splash_screen/splash_screen.dart';
+import 'package:taxiassist/View/Login/login.dart';
 
 class SplashScreenController  {
+User? _user;
 
   void splashTimer() {
-    Timer(Duration(seconds: 3), () { 
-      Get.to(() => Home_Page());
-    });
+    if(_user != null){
+      Timer(const Duration(seconds: 3), () { 
+              Get.to(() => const Home_Page());
+
+      });
+    }
+    else {
+      Timer(const Duration(seconds: 3), () { 
+              Get.to(() => const Login_Page());
+
+      });
+    }
   }
   
 }

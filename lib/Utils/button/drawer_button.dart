@@ -5,7 +5,7 @@ import 'package:taxiassist/Utils/app_color/app_colors.dart';
 class MyDrawerButton extends StatelessWidget {
   final void Function()? ontap;
   final String text1;
-   MyDrawerButton({super.key, required this.ontap, required this.text1});
+   const MyDrawerButton({super.key, required this.ontap, required this.text1});
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +25,6 @@ class MyDrawerButton extends StatelessWidget {
           child: Text(text1,style: TextStyle(color: AppColors.whiteColor),) ,
         ),
       ),
-    );;
+    );
   }
 }
